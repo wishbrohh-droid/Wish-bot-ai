@@ -1,6 +1,9 @@
 const menu = document.getElementById("menu");
 const levelPage = document.getElementById("levelPage");
 const levelTitle = document.getElementById("levelTitle");
+const story1 = document.getElementById("story1");
+const story2 = document.getElementById("story2");
+const story3 = document.getElementById("story3");
 
 function openLevel(level){
 
@@ -8,6 +11,32 @@ menu.style.display="none";
 levelPage.classList.remove("hidden");
 
 levelTitle.innerText="Level " + level;
+
+/* STORIES FOR EACH LEVEL */
+
+if(level === 1){
+
+story1.innerText="Story for level 1";
+story2.innerText="More explanation for level 1";
+story3.innerText="Ending of level 1";
+
+}
+
+if(level === 2){
+
+story1.innerText="Story for level 2";
+story2.innerText="More explanation for level 2";
+story3.innerText="Ending of level 2";
+
+}
+
+if(level === 3){
+
+story1.innerText="Story for level 3";
+story2.innerText="More explanation for level 3";
+story3.innerText="Ending of level 3";
+
+}
 
 }
 
@@ -17,50 +46,3 @@ menu.style.display="block";
 levelPage.classList.add("hidden");
 
 }
-
-/* STAR BACKGROUND */
-
-const canvas = document.getElementById("universe");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let stars = [];
-
-for(let i=0;i<250;i++){
-
-stars.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-size:Math.random()*2,
-speed:Math.random()*0.6
-})
-
-}
-
-function animate(){
-
-ctx.clearRect(0,0,canvas.width,canvas.height);
-
-ctx.fillStyle="white";
-
-stars.forEach(star=>{
-
-star.y+=star.speed;
-
-if(star.y>canvas.height){
-star.y=0;
-}
-
-ctx.beginPath();
-ctx.arc(star.x,star.y,star.size,0,Math.PI*2);
-ctx.fill();
-
-})
-
-requestAnimationFrame(animate);
-
-}
-
-animate();
